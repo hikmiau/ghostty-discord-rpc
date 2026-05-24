@@ -1,10 +1,23 @@
-const client = require("discord-rich-presence")("1507869608709722142");
+require("dotenv").config();
+
+const client = require("discord-rich-presence")(process.env.CLIENT_ID);
 const path = require("path");
 const fs = require("fs");
 const { execSync } = require("child_process");
 
 const startTimestamp = Date.now();
-const pwdFile = `${process.env.HOME}/.cache/ghostty-rpc-pwd`;
+const pwdFile = `${process.env.HOME}/.cache/kitty-rpc-pwd`;
+
+const config = {
+  details: "Using Kitty",
+  fallbackProject: "Terminal",
+
+  largeImageKey: "your_large_image_asset_key",
+  largeImageText: "Your large image hover text",
+
+  smallImageKey: "your_small_image_asset_key",
+  smallImageText: "Your small image hover text",
+};
 
 function isNvimRunning() {
   try {
@@ -20,7 +33,7 @@ function getCurrentProject() {
     const currentDir = fs.readFileSync(pwdFile, "utf8").trim();
     return path.basename(currentDir) || "Home";
   } catch {
-    return "Kitty";
+    return config.fallbackProject;
   }
 }
 
@@ -31,13 +44,15 @@ function updatePresence() {
   }
 
   client.updatePresence({
-    details: "Using Kitty",
+    details: config.details,
     state: `Project: ${getCurrentProject()}`,
     startTimestamp,
-    largeImageKey: "kitty",
-    largeImageText: "Kitty Terminal",
-    smallImageKey: "arch",
-    smallImageText: "Arch Linux",
+
+    largeImageKey: config.largeImageKey,
+    largeImageText: config.largeImageText,
+
+    smallImageKey: config.smallImageKey,
+    smallImageText: config.smallImageText,
   });
 }
 
