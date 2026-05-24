@@ -1,0 +1,11 @@
+[Unit]
+Description=Kitty Discord RPC
+
+[Service]
+WorkingDirectory=/path/to/kitty-discord-rpc
+ExecStart=/usr/bin/node index.js
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=default.target
