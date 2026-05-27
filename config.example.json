@@ -1,0 +1,26 @@
+{
+  "client_id": "YOUR_DISCORD_APPLICATION_CLIENT_ID",
+  "update_interval": 5,
+  "only_when_terminal_focused": true,
+  "details_template": "Using {terminal}",
+  "state_template": "{cwd}",
+  "large_image": "YOUR_LARGE_IMAGE_KEY",
+  "large_text": "Terminal",
+  "small_image": "YOUR_SMALL_IMAGE_KEY",
+  "small_text": "Linux",
+  "shorten_home": true,
+  "compact_coding_path": true,
+  "terminal_names": [
+    "kitty",
+    "alacritty",
+    "wezterm-gui",
+    "ghostty",
+    "konsole",
+    "xfce4-terminal",
+    "gnome-terminal",
+    "gnome-terminal-server",
+    "xterm",
+    "st",
+    "foot"
+  ]
+}

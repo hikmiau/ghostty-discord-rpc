@@ -1,0 +1,13 @@
+[Unit]
+Description=Terminal Discord Rich Presence
+After=graphical-session.target
+
+[Service]
+Type=simple
+WorkingDirectory=/absolute/path/to/kitty-discord-rpc
+ExecStart=/absolute/path/to/kitty-discord-rpc/.venv/bin/python /absolute/path/to/kitty-discord-rpc/src/terminal_discord_rpc.py
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=default.target
