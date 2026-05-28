@@ -10,6 +10,15 @@ SERVICE_FILE="$SYSTEMD_USER_DIR/terminal-discord-rpc.service"
 mkdir -p "$CONFIG_DIR"
 mkdir -p "$SYSTEMD_USER_DIR"
 
+if [ ! -d "$PROJECT_DIR/.venv" ]; then
+  python -m venv "$PROJECT_DIR/.venv"
+  echo "Created virtual environment: $PROJECT_DIR/.venv"
+else
+  echo "Virtual environment already exists: $PROJECT_DIR/.venv"
+fi
+
+"$PROJECT_DIR/.venv/bin/pip" install -r "$PROJECT_DIR/requirements.txt"
+
 if [ ! -f "$CONFIG_DIR/config.json" ]; then
   cp "$PROJECT_DIR/config.example.json" "$CONFIG_DIR/config.json"
   echo "Created config: $CONFIG_DIR/config.json"
